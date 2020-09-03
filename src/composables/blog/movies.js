@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { ref } from 'vue';
+import {
+  ref
+} from 'vue';
 
 export default function useMovies() {
   let movies = ref([]);
@@ -9,13 +11,13 @@ export default function useMovies() {
 
   function fetchTopMovie() {
     axios
-    .get("https://api.themoviedb.org/3/movie/top_rated?api_key=" + API_KEY + "&language=en-US&page=1")
-    .then(response => {
-      movies.value = response.data.results;
-    })
-    .catch(error => {
-      console.log(error);
-    })
+      .get("https://api.themoviedb.org/3/movie/top_rated?api_key=" + API_KEY + "&language=en-US&page=1")
+      .then(response => {
+        movies.value = response.data.results;
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
   return {
