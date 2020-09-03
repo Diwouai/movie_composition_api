@@ -1,10 +1,8 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <Header /><!-- //height 32 -->
-    <div class="flex-1 flex w-2/3 mx-auto p-4 text-lg bg-white h-full shadow-lg">
-      <div class="w-3/5">
-        <router-view :key="$route.fullPath" />
-      </div>
+    <div class="container my-12 mx-auto px-4 md:px-12">
+      <router-view :key="$route.fullPath" />
     </div>
   </div>
 </template>

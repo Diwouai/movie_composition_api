@@ -4,7 +4,8 @@ import { ref } from 'vue';
 export default function useMovies() {
   let movies = ref([]);
 
-  const API_KEY = 'ec6d53f8c6e364ecee8e6df9d9382d56'
+  const API_KEY = 'ec6d53f8c6e364ecee8e6df9d9382d56';
+  const IMG_URL = 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/';
 
   function fetchTopMovie() {
     axios
@@ -18,6 +19,7 @@ export default function useMovies() {
   }
 
   return {
+    IMG_URL,
     fetchTopMovie,
     movies
   }
