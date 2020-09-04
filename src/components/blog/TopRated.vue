@@ -6,11 +6,13 @@
       <!-- Article -->
       <article class="overflow-hidden rounded-lg shadow-lg">
 
-        <img class="block h-auto w-full" :src="IMG_URL + movie.poster_path">
+        <router-link :to="`/movie/${movie.id}`">
+          <img class="block h-auto w-full" :src="IMG_URL + movie.poster_path">
+        </router-link>
 
         <header class="flex items-center justify-between leading-tight p-2 md:p-4">
           <h1 class="text-lg">
-            {{ movie.title }}
+            <router-link :to="`/movie/${movie.id}`">{{ movie.title }}</router-link>
           </h1>
         </header>
 
