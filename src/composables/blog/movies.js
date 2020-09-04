@@ -12,7 +12,7 @@ export default function useMovies() {
 
   function fetchTopMovie() {
     axios
-      .get("https://api.themoviedb.org/3/movie/top_rated?api_key=" + API_KEY + "&language=en-US&page=1")
+      .get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
       .then(response => {
         movies.value = response.data.results;
       })
