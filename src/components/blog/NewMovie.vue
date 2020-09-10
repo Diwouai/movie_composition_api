@@ -12,7 +12,7 @@
 
         <header class="flex items-center justify-between leading-tight p-2 md:p-4">
           <h1 class="text-lg">
-            <router-link :to="`/movie/${movie.id}`">{{ movie.title }}</router-link>
+            <router-link :to="`/movie/${movie.id}`" class="text-black">{{ movie.title }}</router-link>
           </h1>
         </header>
 
