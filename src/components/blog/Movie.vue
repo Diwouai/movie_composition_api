@@ -5,13 +5,15 @@
     </h2>
     <div class="flex items-center flex-wrap mb-20">
       <div class="w-full md:w-1/2">
-        <h4 class="text-base text-gray-800 font-bold mb-3">Release Date : {{ formatDate(movie.release_date) }}</h4>
+        <h5 class="text-base text-gray-800 font-bold mb-3">Release Date : {{ formatDate(movie.release_date) }}</h5>
         <h5 class="text-base text-gray-800 font-bold mb-3">Vote Average : {{ movie.vote_average }}</h5>
         <h5 class="text-base text-gray-800 font-bold mb-3">Duration : {{ timeConvert(movie.runtime) }}</h5>
         <h5 class="text-base text-gray-800 font-bold mb-3">
           Cast : <div>
             <span v-for="c in cast" :key="c.id">
-              <b>{{ c.name }}</b> / <i>{{ c.character }}</i>&nbsp;
+              <router-link :to="`/people/${c.id}`" class="text-black hover:text-teal-400" style="text-decoration: none">
+                <b>{{ c.name }}</b> / <i>{{ c.character }}</i>&nbsp;
+              </router-link>
             </span>
           </div>
         </h5>
