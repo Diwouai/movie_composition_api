@@ -5,6 +5,7 @@ import {
 
 export default function useMovies() {
   let movies = ref([]);
+  let upcomingMovies = ref([]);
   let movie = ref([]);
 
   const API_KEY = 'ec6d53f8c6e364ecee8e6df9d9382d56';
@@ -12,9 +13,20 @@ export default function useMovies() {
 
   function fetchTopMovie() {
     axios
-      .get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
+      .get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
       .then(response => {
         movies.value = response.data.results;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  function fetchUpcomingMovie() {
+    axios
+      .get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
+      .then(response => {
+        upcomingMovies.value = response.data.results;
       })
       .catch(error => {
         console.log(error);
@@ -36,6 +48,8 @@ export default function useMovies() {
     IMG_URL,
     fetchTopMovie,
     movies,
+    fetchUpcomingMovie,
+    upcomingMovies,
     fetchMovieDetail,
     movie
   }
