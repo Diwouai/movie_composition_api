@@ -29,6 +29,7 @@
 
 <script>
   import useMovies from "@/composables/blog/movies";
+  import useUtils from "@/composables/utils";
   import router from "@/router";
 
   export default {
@@ -43,23 +44,13 @@
         cast,
         IMG_URL
       } = useMovies();
+      const {
+        formatDate,
+        timeConvert
+      } = useUtils();
 
       fetchMovieDetail(currentRoute.value.params.id);
       fetchCasting(currentRoute.value.params.id);
-
-      function formatDate(date) {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return new Date(date).toLocaleDateString('en', options);
-      }
-
-      function timeConvert(n) {
-        let num = n;
-        let hours = (num / 60);
-        let rhours = Math.floor(hours);
-        let minutes = (hours - rhours) * 60;
-        let rminutes = Math.round(minutes);
-        return rhours + "h" + rminutes;
-      }
 
       return {
         movie,
