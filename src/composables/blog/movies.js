@@ -7,6 +7,7 @@ export default function useMovies() {
   let movies = ref([]);
   let upcomingMovies = ref([]);
   let movie = ref([]);
+  let cast = ref([]);
 
   const API_KEY = 'ec6d53f8c6e364ecee8e6df9d9382d56';
   const IMG_URL = 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/';
@@ -44,6 +45,17 @@ export default function useMovies() {
       })
   }
 
+  function fetchCasting(movieID) {
+    axios
+      .get(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${API_KEY}`)
+      .then(response => {
+        cast.value = response.data.cast;
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   return {
     IMG_URL,
     fetchTopMovie,
@@ -51,6 +63,8 @@ export default function useMovies() {
     fetchUpcomingMovie,
     upcomingMovies,
     fetchMovieDetail,
-    movie
+    movie,
+    fetchCasting,
+    cast
   }
 }

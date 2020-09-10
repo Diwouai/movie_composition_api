@@ -7,7 +7,7 @@
       <article class="overflow-hidden rounded-lg shadow-lg">
 
         <router-link :to="`/movie/${movie.id}`">
-          <img class="block h-auto w-full" :src="IMG_URL + movie.poster_path">
+          <img class="block h-auto w-full" :src="IMG_URL + movie.poster_path" :alt="movie.title">
         </router-link>
 
         <header class="flex items-center justify-between leading-tight p-2 md:p-4">
