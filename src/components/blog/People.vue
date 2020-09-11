@@ -6,7 +6,7 @@
     <div class="flex items-center flex-wrap mb-20">
       <div class="w-full md:w-1/2">
         <h5 class="text-base text-gray-800 font-bold mb-3">Birthday : {{ formatDate(people.birthday) }}</h5>
-        <h5 class="text-base text-gray-800 font-bold mb-3">Place fo birth : {{ people.place_of_birth }}</h5>
+        <h5 class="text-base text-gray-800 font-bold mb-3">Place of birth : {{ people.place_of_birth }}</h5>
         <p class="text-gray-600 mb-8">
           {{ people.biography }}
         </p>

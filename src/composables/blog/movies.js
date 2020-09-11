@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { AXIOS_API, API_KEY } from '@/services/api';
 import {
   ref
 } from 'vue';
@@ -9,12 +9,11 @@ export default function useMovies() {
   let movie = ref([]);
   let cast = ref([]);
 
-  const API_KEY = 'ec6d53f8c6e364ecee8e6df9d9382d56';
   const IMG_URL = 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/';
 
   function fetchTopMovie() {
-    axios
-      .get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
+    AXIOS_API
+      .get(`discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
       .then(response => {
         movies.value = response.data.results;
       })
@@ -24,8 +23,8 @@ export default function useMovies() {
   }
 
   function fetchUpcomingMovie() {
-    axios
-      .get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
+    AXIOS_API
+      .get(`movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
       .then(response => {
         upcomingMovies.value = response.data.results;
       })
@@ -35,8 +34,8 @@ export default function useMovies() {
   }
 
   function fetchMovieDetail(movieID) {
-    axios
-      .get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US`)
+    AXIOS_API
+      .get(`movie/${movieID}?api_key=${API_KEY}&language=en-US`)
       .then(response => {
         movie.value = response.data;
       })
@@ -46,8 +45,8 @@ export default function useMovies() {
   }
 
   function fetchCasting(movieID) {
-    axios
-      .get(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${API_KEY}`)
+    AXIOS_API
+      .get(`movie/${movieID}/credits?api_key=${API_KEY}`)
       .then(response => {
         cast.value = response.data.cast;
       })
