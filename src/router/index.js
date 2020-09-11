@@ -1,8 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Upcoming from "../views/Upcoming.vue";
-import Movie from "../components/blog/Movie.vue";
-import People from "../components/blog/People.vue";
 
 const routes = [
   {
@@ -13,17 +10,20 @@ const routes = [
   {
     path: "/upcoming",
     name: "Upcoming",
-    component: Upcoming
+    component: () =>
+      import("../views/Upcoming.vue")
   },
   {
     path: "/movie/:id",
     name: "Movie",
-    component: Movie
+    component: () =>
+      import("../components/blog/Movie.vue")
   },
   {
     path: "/people/:id",
     name: "People",
-    component: People
+    component: () =>
+      import("../components/blog/People.vue")
   }
 ];
 
