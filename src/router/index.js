@@ -24,6 +24,11 @@ const routes = [
     name: "People",
     component: () =>
       import("../components/blog/People.vue")
+  },
+  {
+    path: "/*",
+    component: () =>
+      import("../components/404.vue")
   }
 ];
 
