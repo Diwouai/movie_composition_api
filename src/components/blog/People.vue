@@ -5,8 +5,12 @@
     </h2>
     <div class="flex items-center flex-wrap mb-20">
       <div class="w-full md:w-1/2">
-        <h5 class="text-base text-gray-800 font-bold mb-3">Birthday : {{ formatDate(people.birthday) }}</h5>
-        <h5 class="text-base text-gray-800 font-bold mb-3">Place of birth : {{ people.place_of_birth }}</h5>
+        <h5 class="text-base text-gray-800 font-bold mb-3">
+          Birthday : {{ formatDate(people.birthday) }}
+        </h5>
+        <h5 class="text-base text-gray-800 font-bold mb-3">
+          Place of birth : {{ people.place_of_birth }}
+        </h5>
         <p class="text-gray-600 mb-8">
           {{ people.biography }}
         </p>
@@ -20,31 +24,23 @@
 </template>
 
 <script>
-  import usePeoples from "@/composables/blog/peoples";
-  import useUtils from "@/composables/utils";
-  import router from "@/router";
+import usePeoples from "@/composables/blog/peoples";
+import useUtils from "@/composables/utils";
+import router from "@/router";
 
-  export default {
-    setup() {
-      const {
-        currentRoute
-      } = router;
-      const {
-        fetchPeopleDetail,
-        people,
-        IMG_URL
-      } = usePeoples();
-      const {
-        formatDate
-      } = useUtils();
+export default {
+  setup() {
+    const { currentRoute } = router;
+    const { fetchPeopleDetail, people, IMG_URL } = usePeoples();
+    const { formatDate } = useUtils();
 
-      fetchPeopleDetail(currentRoute.value.params.id);
+    fetchPeopleDetail(currentRoute.value.params.id);
 
-      return {
-        people,
-        IMG_URL,
-        formatDate
-      }
-    }
-  }
+    return {
+      people,
+      IMG_URL,
+      formatDate,
+    };
+  },
+};
 </script>

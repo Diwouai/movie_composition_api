@@ -5,36 +5,32 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/upcoming",
     name: "Upcoming",
-    component: () =>
-      import("../views/Upcoming.vue")
+    component: () => import("../views/Upcoming.vue"),
   },
   {
     path: "/movie/:id",
     name: "Movie",
-    component: () =>
-      import("../components/blog/Movie.vue")
+    component: () => import("../components/blog/Movie.vue"),
   },
   {
     path: "/people/:id",
     name: "People",
-    component: () =>
-      import("../components/blog/People.vue")
+    component: () => import("../components/blog/People.vue"),
   },
   {
     path: "/*",
-    component: () =>
-      import("../components/404.vue")
-  }
+    component: () => import("../components/404.vue"),
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;
